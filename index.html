@@ -26,8 +26,15 @@
   <!-- Base Template CSS -->
   <link href="assets/css/main.css" rel="stylesheet">
 
-  <!-- EmailJS -->
-  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+  <!-- Google Analytics 4 — STEP 2: Replace G-XXXXXXXXXX with your Measurement ID -->
+  <!-- Get your ID at: https://analytics.google.com → Admin → Create Property → Web Stream -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX');
+  </script>
 
   <style>
     /* =============================================
@@ -720,7 +727,7 @@
 
     <div class="social-links text-center mb-3">
       <a href="https://www.linkedin.com/in/dhimant-suthar-sagittarius" target="_blank" class="linkedin" title="LinkedIn"><i class="bi bi-linkedin"></i></a>
-      <a href="mailto:dhimantsuthar71@gmail.com" class="email" title="Email"><i class="bi bi-envelope"></i></a>
+      <a href="/cdn-cgi/l/email-protection#5d393534303c33292e2829353c2f6a6c1d3a303c3431733e3230" class="email" title="Email"><i class="bi bi-envelope"></i></a>
     </div>
 
     <nav id="navmenu" class="navmenu">
@@ -801,7 +808,7 @@
                   </li>
                   <li style="padding:6px 0; border-bottom:1px solid rgba(255,255,255,0.05);">
                     <i class="bi bi-chevron-right" style="color:var(--c-amber);font-size:12px;margin-right:8px;"></i>
-                    <strong>Email:</strong>&nbsp;<a href="mailto:dhimantsuthar71@gmail.com" style="color:var(--c-amber); font-size:0.88rem;">dhimantsuthar71@gmail.com</a>
+                    <strong>Email:</strong>&nbsp;<a href="/cdn-cgi/l/email-protection#ee8a8687838f809a9d9b9a868f9cd9dfae89838f8782c08d8183" style="color:var(--c-amber); font-size:0.88rem;"><span class="__cf_email__" data-cfemail="56323e3f3b3738222523223e3724616716313b373f3a7835393b">[email&#160;protected]</span></a>
                   </li>
                   <li style="padding:6px 0;">
                     <i class="bi bi-chevron-right" style="color:var(--c-amber);font-size:12px;margin-right:8px;"></i>
@@ -935,7 +942,7 @@
               <p><em>Innovative and deadline-driven Unified Communications Engineer with 11+ years of experience designing and implementing Voice, Video and Data solutions from initial concept to final deliverable.</em></p>
               <ul>
                 <li>Vadodara, Gujarat, India 391330</li>
-                <li><a href="mailto:dhimantsuthar71@gmail.com">dhimantsuthar71@gmail.com</a></li>
+                <li><a href="/cdn-cgi/l/email-protection#593d31303438372d2a2c2d31382b6e68193e34383035773a3634"><span class="__cf_email__" data-cfemail="3e5a5657535f504a4d4b4a565f4c090f7e59535f5752105d5153">[email&#160;protected]</span></a></li>
               </ul>
             </div>
 
@@ -1116,7 +1123,7 @@
 
       <div class="container" data-aos="fade-up" data-aos-delay="100">
         <div class="swiper init-swiper">
-          <script type="application/json" class="swiper-config">
+          <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script type="application/json" class="swiper-config">
             {
               "loop": true,
               "speed": 600,
@@ -1203,7 +1210,7 @@
                 <i class="bi bi-envelope flex-shrink-0"></i>
                 <div>
                   <h3>Email</h3>
-                  <p><a href="mailto:dhimantsuthar71@gmail.com">dhimantsuthar71@gmail.com</a></p>
+                  <p><a href="/cdn-cgi/l/email-protection#2b4f4342464a455f585e5f434a591c1a6b4c464a424705484446"><span class="__cf_email__" data-cfemail="90f4f8f9fdf1fee4e3e5e4f8f1e2a7a1d0f7fdf1f9fcbef3fffd">[email&#160;protected]</span></a></p>
                 </div>
               </div>
 
@@ -1251,7 +1258,7 @@
                 </div>
 
                 <div class="col-12">
-                  <button id="contact-btn" type="button" onclick="sendEmail()">
+                  <button id="contact-btn" type="button" onclick="submitForm()">
                     <i class="bi bi-send"></i> Send Message
                   </button>
                   <div id="form-status"></div>
@@ -1287,7 +1294,7 @@
   <div id="preloader"></div>
 
   <!-- Vendor JS Files -->
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="assets/vendor/aos/aos.js"></script>
   <script src="assets/vendor/typed.js/typed.umd.js"></script>
   <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
@@ -1301,27 +1308,18 @@
   <script src="assets/js/main.js"></script>
 
   <!-- ==============================
-       EMAIL JS — CONTACT FORM
+       FORMSPREE CONTACT FORM
+       STEP 1: Sign up at https://formspree.io using dhimantsuthar71@gmail.com
+       STEP 2: Click "+ New Form", name it "Portfolio Contact", click Create
+       STEP 3: Copy the form endpoint — looks like: https://formspree.io/f/xabcdefg
+       STEP 4: Replace YOUR_FORMSPREE_ID below (just the last part, e.g. xabcdefg)
   =============================== -->
   <script>
-    /**
-     * EmailJS Setup Instructions:
-     * 1. Go to https://www.emailjs.com and sign up (free)
-     * 2. Add an Email Service (Gmail) → note your SERVICE_ID
-     * 3. Create an Email Template with these variables:
-     *       {{from_name}}, {{from_email}}, {{subject}}, {{message}}
-     *    Set the "To Email" as dhimantsuthar71@gmail.com
-     *    → Note your TEMPLATE_ID
-     * 4. Go to Account → API Keys → copy your PUBLIC KEY
-     * 5. Replace the three values below with your actual IDs
-     */
-    const EMAILJS_SERVICE_ID  = 'YOUR_SERVICE_ID';   // e.g. 'service_abc123'
-    const EMAILJS_TEMPLATE_ID = 'YOUR_TEMPLATE_ID';  // e.g. 'template_xyz789'
-    const EMAILJS_PUBLIC_KEY  = 'YOUR_PUBLIC_KEY';   // e.g. 'aBcDeFgHiJkLmNoP'
+    // ─── STEP 4: Paste your Formspree form ID here (the part after /f/) ───────
+    const FORMSPREE_ID = 'YOUR_FORMSPREE_ID';   // e.g.  'xabcdefg'
+    // ─────────────────────────────────────────────────────────────────────────
 
-    emailjs.init(EMAILJS_PUBLIC_KEY);
-
-    function sendEmail() {
+    function submitForm() {
       const name    = document.getElementById('cf-name').value.trim();
       const email   = document.getElementById('cf-email').value.trim();
       const subject = document.getElementById('cf-subject').value.trim();
@@ -1329,16 +1327,20 @@
       const status  = document.getElementById('form-status');
       const btn     = document.getElementById('contact-btn');
 
-      // Basic validation
+      // Validation
       if (!name || !email || !subject || !message) {
         status.className = 'error';
         status.textContent = '⚠ Please fill in all fields before sending.';
         return;
       }
-      const emailReg = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if (!emailReg.test(email)) {
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
         status.className = 'error';
         status.textContent = '⚠ Please enter a valid email address.';
+        return;
+      }
+      if (FORMSPREE_ID === 'maqdzbov') {
+        status.className = 'error';
+        status.textContent = '⚠ Form not configured yet. Please replace YOUR_FORMSPREE_ID in the code.';
         return;
       }
 
@@ -1347,39 +1349,37 @@
       status.className = '';
       status.style.display = 'none';
 
-      const templateParams = {
-        from_name:  name,
-        from_email: email,
-        subject:    subject,
-        message:    message,
-        to_email:   'dhimantsuthar71@gmail.com'
-      };
-
-      emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams)
-        .then(() => {
+      fetch('https://formspree.io/f/' + FORMSPREE_ID, {
+        method: 'POST',
+        headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, email, subject, message, _replyto: email })
+      })
+      .then(res => {
+        if (res.ok) {
           status.className = 'success';
-          status.textContent = '✓ Your message has been sent! I will get back to you within a day.';
-          // Reset form
+          status.textContent = '✓ Message sent! I will get back to you within a day.';
           document.getElementById('cf-name').value    = '';
           document.getElementById('cf-email').value   = '';
           document.getElementById('cf-subject').value = '';
           document.getElementById('cf-message').value = '';
-        })
-        .catch((err) => {
-          console.error('EmailJS Error:', err);
-          status.className = 'error';
-          status.textContent = '✕ Oops! Something went wrong. Please email me directly at dhimantsuthar71@gmail.com';
-        })
-        .finally(() => {
-          btn.disabled = false;
-          btn.innerHTML = '<i class="bi bi-send"></i> Send Message';
-        });
+        } else {
+          return res.json().then(d => { throw new Error(d.error || 'Unknown error'); });
+        }
+      })
+      .catch(err => {
+        status.className = 'error';
+        status.textContent = '✕ Something went wrong (' + err.message + '). Please email dhimantsuthar71@gmail.com directly.';
+      })
+      .finally(() => {
+        btn.disabled = false;
+        btn.innerHTML = '<i class="bi bi-send"></i> Send Message';
+      });
     }
 
-    // Allow Enter key in fields (except textarea) to submit
+    // Enter key to submit from text inputs
     ['cf-name','cf-email','cf-subject'].forEach(id => {
       document.getElementById(id).addEventListener('keydown', e => {
-        if (e.key === 'Enter') sendEmail();
+        if (e.key === 'Enter') submitForm();
       });
     });
   </script>
