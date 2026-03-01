@@ -26,14 +26,13 @@
   <!-- Base Template CSS -->
   <link href="assets/css/main.css" rel="stylesheet">
 
-  <!-- Google Analytics 4 — STEP 2: Replace G-XXXXXXXXXX with your Measurement ID -->
-  <!-- Get your ID at: https://analytics.google.com → Admin → Create Property → Web Stream -->
+  <!-- Google Analytics 4 -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-QZF94B8D0P"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-    gtag('config', 'G-G-QZF94B8D0P');
+    gtag('config', 'G-QZF94B8D0P');
   </script>
 
   <style>
@@ -1316,7 +1315,7 @@
   =============================== -->
   <script>
     // ─── STEP 4: Paste your Formspree form ID here (the part after /f/) ───────
-    const FORMSPREE_ID = 'YOUR_FORMSPREE_ID';   // e.g.  'xabcdefg'
+    const FORMSPREE_ID = 'maqdzbov';   // e.g.  'xabcdefg'
     // ─────────────────────────────────────────────────────────────────────────
 
     function submitForm() {
@@ -1338,11 +1337,7 @@
         status.textContent = '⚠ Please enter a valid email address.';
         return;
       }
-      if (FORMSPREE_ID === 'maqdzbov') {
-        status.className = 'error';
-        status.textContent = '⚠ Form not configured yet. Please replace YOUR_FORMSPREE_ID in the code.';
-        return;
-      }
+      // FORMSPREE_ID is configured — no guard needed
 
       btn.disabled = true;
       btn.innerHTML = '<i class="bi bi-hourglass-split"></i> Sending…';
