@@ -1,1383 +1,348 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Dhimant Suthar — UC Engineer & Solutions Architect</title>
-  <meta name="description" content="Dhimant Suthar — 11+ years in Unified Communications, Cloud, and Solutions Architecture. Based in Vadodara, India.">
-  <meta name="keywords" content="Dhimant Suthar, UC Engineer, Solutions Architect, Microsoft Teams, Cisco, Avaya, VoIP, Cloud">
-
-  <!-- Favicons -->
-  <link href="assets/img/favicon.png" rel="icon">
-  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
-
-  <!-- Google Fonts: Syne (headings) + Figtree (body) -->
-  <link href="https://fonts.googleapis.com" rel="preconnect">
-  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Figtree:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet">
-
-  <!-- Vendor CSS -->
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
-  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-
-  <!-- Base Template CSS -->
-  <link href="assets/css/main.css" rel="stylesheet">
-
-  <!-- Google Analytics 4 -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-QZF94B8D0P"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-QZF94B8D0P');
-  </script>
-
-  <style>
-    /* =============================================
-       DESIGN SYSTEM — NOIR AMBER
-    ============================================= */
-    :root {
-      --c-bg:       #0b0b0e;
-      --c-surface:  #111116;
-      --c-sidebar:  #0e0e12;
-      --c-border:   rgba(255,255,255,0.07);
-      --c-amber:    #e8a020;
-      --c-amber-lt: #f4b84a;
-      --c-amber-dk: #b37810;
-      --c-text:     #e2e2e6;
-      --c-muted:    #7a7a88;
-      --c-heading:  #ffffff;
-      --c-card:     #16161d;
-      --radius:     12px;
-      --font-head:  'Syne', sans-serif;
-      --font-body:  'Figtree', sans-serif;
-      --sidebar-w:  300px;
-    }
-
-    /* =============================================
-       BASE RESETS
-    ============================================= */
-    *, *::before, *::after { box-sizing: border-box; }
-
-    html { scroll-behavior: smooth; }
-
-    body {
-      background: var(--c-bg) !important;
-      color: var(--c-text) !important;
-      font-family: var(--font-body) !important;
-      font-size: 15px;
-      line-height: 1.7;
-      -webkit-font-smoothing: antialiased;
-    }
-
-    h1,h2,h3,h4,h5,h6 {
-      font-family: var(--font-head) !important;
-      color: var(--c-heading) !important;
-    }
-
-    a { color: var(--c-amber); text-decoration: none; }
-    a:hover { color: var(--c-amber-lt); }
-
-    /* =============================================
-       SIDEBAR / HEADER
-    ============================================= */
-    #header.header {
-      background: var(--c-sidebar) !important;
-      border-right: 1px solid var(--c-border);
-      width: var(--sidebar-w) !important;
-      padding: 28px 20px !important;
-      position: fixed;
-    }
-
-    .profile-img img {
-      border: 3px solid var(--c-amber) !important;
-      box-shadow: 0 0 0 6px rgba(232, 160, 32, 0.12);
-      width: 120px;
-      height: 120px;
-      object-fit: cover;
-    }
-
-    .logo .sitename {
-      font-family: var(--font-head) !important;
-      font-size: 1.2rem !important;
-      font-weight: 700 !important;
-      color: var(--c-heading) !important;
-      letter-spacing: 0.02em;
-    }
-
-    .social-links a {
-      background: rgba(255,255,255,0.05) !important;
-      color: var(--c-muted) !important;
-      border: 1px solid var(--c-border) !important;
-      border-radius: 8px;
-      width: 36px;
-      height: 36px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 14px;
-      margin: 2px;
-      transition: all 0.25s;
-    }
-    .social-links a:hover {
-      background: var(--c-amber) !important;
-      color: #000 !important;
-      border-color: var(--c-amber) !important;
-      transform: translateY(-2px);
-    }
-
-    .navmenu ul li a {
-      font-family: var(--font-body) !important;
-      font-size: 0.88rem !important;
-      font-weight: 500 !important;
-      color: var(--c-muted) !important;
-      padding: 10px 14px !important;
-      border-radius: 8px;
-      transition: all 0.2s;
-      letter-spacing: 0.01em;
-    }
-    .navmenu ul li a:hover,
-    .navmenu ul li a.active {
-      color: var(--c-amber) !important;
-      background: rgba(232, 160, 32, 0.08) !important;
-    }
-    .navmenu ul li a i {
-      color: var(--c-amber) !important;
-      font-size: 16px;
-    }
-
-    /* Mobile header toggle */
-    .header-toggle {
-      color: var(--c-amber) !important;
-      background: var(--c-sidebar) !important;
-      border: 1px solid var(--c-border) !important;
-    }
-
-    /* =============================================
-       MAIN CONTENT OFFSET
-    ============================================= */
-    @media (min-width: 1200px) {
-      #main, .main { margin-left: var(--sidebar-w) !important; }
-    }
-
-    /* =============================================
-       SECTION TITLES
-    ============================================= */
-    .section-title h2 {
-      font-size: 2.2rem !important;
-      font-weight: 800 !important;
-      color: var(--c-heading) !important;
-      position: relative;
-      display: inline-block;
-    }
-    .section-title h2::after {
-      content: '';
-      display: block;
-      width: 48px;
-      height: 3px;
-      background: var(--c-amber);
-      border-radius: 2px;
-      margin-top: 10px;
-    }
-    .section-title p {
-      color: var(--c-muted) !important;
-      font-size: 0.95rem;
-      max-width: 640px;
-    }
-
-    /* =============================================
-       HERO SECTION
-    ============================================= */
-    #hero.hero {
-      background: var(--c-bg) !important;
-      position: relative;
-      overflow: hidden;
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-    }
-
-    #hero::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(ellipse 80% 60% at 60% 40%, rgba(232,160,32,0.06) 0%, transparent 65%),
-        radial-gradient(ellipse 50% 50% at 10% 80%, rgba(232,160,32,0.04) 0%, transparent 60%);
-      pointer-events: none;
-    }
-
-    /* Dot grid overlay */
-    #hero::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background-image: radial-gradient(rgba(255,255,255,0.05) 1px, transparent 1px);
-      background-size: 32px 32px;
-      pointer-events: none;
-      z-index: 0;
-    }
-
-    #hero img { display: none; } /* hide the bg image */
-
-    #hero .container {
-      position: relative;
-      z-index: 1;
-      padding-top: 0 !important;
-    }
-
-    #hero h2 {
-      font-size: clamp(2.8rem, 6vw, 5rem) !important;
-      font-weight: 800 !important;
-      color: var(--c-heading) !important;
-      line-height: 1.1;
-      letter-spacing: -0.02em;
-      margin-bottom: 16px;
-    }
-
-    #hero p {
-      font-size: 1.25rem !important;
-      color: var(--c-muted) !important;
-      font-family: var(--font-body) !important;
-    }
-
-    #hero p .typed {
-      color: var(--c-amber) !important;
-      font-weight: 600;
-    }
-
-    .typed-cursor { color: var(--c-amber) !important; }
-
-    /* =============================================
-       ABOUT SECTION
-    ============================================= */
-    #about { background: var(--c-bg) !important; }
-
-    #about .about img {
-      border-radius: var(--radius) !important;
-      border: 2px solid var(--c-border);
-      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
-    }
-
-    #about .content h2 {
-      font-size: 1.5rem !important;
-      font-weight: 700 !important;
-    }
-
-    #about .content ul li {
-      color: var(--c-text) !important;
-      font-size: 0.9rem;
-      padding: 4px 0;
-    }
-
-    #about .content ul li strong {
-      color: var(--c-amber) !important;
-    }
-
-    #about .content .fst-italic {
-      color: var(--c-muted) !important;
-      border-left: 3px solid var(--c-amber);
-      padding-left: 14px;
-    }
-
-    /* =============================================
-       STATS SECTION
-    ============================================= */
-    #stats { background: var(--c-surface) !important; }
-
-    .stats-item {
-      background: var(--c-card) !important;
-      border: 1px solid var(--c-border) !important;
-      border-radius: var(--radius) !important;
-      padding: 28px 20px !important;
-      text-align: center;
-      transition: transform 0.25s, border-color 0.25s;
-    }
-    .stats-item:hover {
-      transform: translateY(-4px);
-      border-color: var(--c-amber) !important;
-    }
-    .stats-item i {
-      color: var(--c-amber) !important;
-      font-size: 2rem;
-      margin-bottom: 8px;
-    }
-    .stats-item span {
-      font-family: var(--font-head) !important;
-      font-size: 2.4rem !important;
-      font-weight: 800 !important;
-      color: var(--c-heading) !important;
-    }
-    .stats-item p {
-      margin: 6px 0 0 !important;
-      color: var(--c-muted) !important;
-      font-size: 0.85rem !important;
-    }
-    .stats-item p strong {
-      color: var(--c-text) !important;
-      display: block;
-    }
-
-    /* =============================================
-       SKILLS SECTION
-    ============================================= */
-    #skills { background: var(--c-bg) !important; }
-
-    .skills .progress {
-      background: transparent !important;
-      margin-bottom: 20px;
-    }
-    .skills .progress .skill {
-      display: flex;
-      justify-content: space-between;
-      font-size: 0.9rem;
-      font-weight: 500;
-      color: var(--c-text) !important;
-      margin-bottom: 8px;
-    }
-    .skills .progress .skill i {
-      color: var(--c-amber) !important;
-      font-style: normal;
-      font-weight: 600;
-    }
-    .skills .progress-bar-wrap {
-      background: rgba(255,255,255,0.07) !important;
-      border-radius: 100px;
-      height: 8px;
-      overflow: hidden;
-    }
-    .skills .progress-bar {
-      background: linear-gradient(90deg, var(--c-amber-dk), var(--c-amber)) !important;
-      border-radius: 100px;
-      height: 100%;
-      transition: width 1.2s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    /* =============================================
-       RESUME SECTION
-    ============================================= */
-    #resume { background: var(--c-surface) !important; }
-
-    .resume-title {
-      font-family: var(--font-head) !important;
-      font-size: 1rem !important;
-      font-weight: 700 !important;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      color: var(--c-amber) !important;
-      margin-bottom: 20px;
-    }
-
-    .resume-item {
-      background: var(--c-card) !important;
-      border: 1px solid var(--c-border) !important;
-      border-left: 3px solid var(--c-amber) !important;
-      border-radius: var(--radius) !important;
-      padding: 20px 20px !important;
-      margin-bottom: 16px !important;
-      position: relative;
-    }
-    .resume-item::before { display: none !important; }
-
-    .resume-item h4 {
-      font-size: 1rem !important;
-      font-weight: 700 !important;
-      color: var(--c-heading) !important;
-      margin-bottom: 4px !important;
-    }
-    .resume-item h5 {
-      font-size: 0.8rem !important;
-      font-weight: 600 !important;
-      color: var(--c-amber) !important;
-      background: rgba(232,160,32,0.1) !important;
-      border: none !important;
-      display: inline-block;
-      padding: 3px 10px;
-      border-radius: 100px;
-      margin-bottom: 8px !important;
-    }
-    .resume-item p em {
-      color: var(--c-muted) !important;
-      font-size: 0.88rem;
-    }
-    .resume-item ul li {
-      color: var(--c-text) !important;
-      font-size: 0.88rem;
-      margin-bottom: 4px;
-    }
-
-    /* =============================================
-       PORTFOLIO SECTION
-    ============================================= */
-    #portfolio { background: var(--c-bg) !important; }
-
-    .portfolio-filters li {
-      background: var(--c-card) !important;
-      border: 1px solid var(--c-border) !important;
-      color: var(--c-muted) !important;
-      border-radius: 100px !important;
-      font-size: 0.83rem !important;
-      padding: 6px 18px !important;
-      transition: all 0.2s;
-    }
-    .portfolio-filters li:hover,
-    .portfolio-filters li.filter-active {
-      background: var(--c-amber) !important;
-      border-color: var(--c-amber) !important;
-      color: #000 !important;
-    }
-
-    .portfolio-content {
-      border-radius: var(--radius) !important;
-      overflow: hidden;
-      border: 1px solid var(--c-border) !important;
-      transition: transform 0.3s, box-shadow 0.3s;
-    }
-    .portfolio-content:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 20px 50px rgba(0,0,0,0.5) !important;
-    }
-
-    .portfolio-info {
-      background: rgba(11,11,14,0.92) !important;
-      backdrop-filter: blur(8px);
-    }
-    .portfolio-info h4 { color: var(--c-heading) !important; font-size: 0.95rem !important; }
-    .portfolio-info p { color: var(--c-muted) !important; font-size: 0.82rem !important; }
-    .portfolio-info a { color: var(--c-amber) !important; }
-
-    /* =============================================
-       SERVICES / EXPERTISE SECTION
-    ============================================= */
-    #services { background: var(--c-surface) !important; }
-
-    .service-item {
-      background: var(--c-card) !important;
-      border: 1px solid var(--c-border) !important;
-      border-radius: var(--radius) !important;
-      padding: 24px !important;
-      transition: transform 0.25s, border-color 0.25s;
-      gap: 16px;
-    }
-    .service-item:hover {
-      transform: translateY(-4px);
-      border-color: var(--c-amber) !important;
-    }
-    .service-item .icon {
-      background: rgba(232,160,32,0.1) !important;
-      border-radius: 10px;
-      width: 52px;
-      height: 52px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-    }
-    .service-item .icon i {
-      color: var(--c-amber) !important;
-      font-size: 1.4rem;
-    }
-    .service-item .title a {
-      font-family: var(--font-head) !important;
-      font-size: 1rem !important;
-      font-weight: 700 !important;
-      color: var(--c-heading) !important;
-    }
-    .service-item .description {
-      color: var(--c-muted) !important;
-      font-size: 0.88rem !important;
-      margin: 0 !important;
-    }
-
-    /* =============================================
-       AWARDS (TESTIMONIALS) SECTION
-    ============================================= */
-    #testimonials { background: var(--c-bg) !important; }
-
-    .testimonial-item {
-      background: var(--c-card) !important;
-      border: 1px solid var(--c-border) !important;
-      border-radius: var(--radius) !important;
-      padding: 28px 24px !important;
-    }
-    .testimonial-item p {
-      color: var(--c-text) !important;
-      font-size: 0.92rem !important;
-      font-style: italic;
-    }
-    .testimonial-item .quote-icon-left,
-    .testimonial-item .quote-icon-right {
-      color: var(--c-amber) !important;
-      font-size: 1.4rem;
-    }
-    .testimonial-item .testimonial-img {
-      border: 3px solid var(--c-amber) !important;
-      border-radius: 50%;
-      width: 60px;
-      height: 60px;
-      object-fit: cover;
-    }
-    .testimonial-item h3 {
-      font-size: 0.95rem !important;
-      font-weight: 700 !important;
-      color: var(--c-heading) !important;
-    }
-    .testimonial-item h4 {
-      font-size: 0.82rem !important;
-      color: var(--c-amber) !important;
-    }
-
-    /* =============================================
-       CONTACT SECTION
-    ============================================= */
-    #contact { background: var(--c-surface) !important; }
-
-    .info-wrap {
-      background: var(--c-card) !important;
-      border: 1px solid var(--c-border) !important;
-      border-radius: var(--radius) !important;
-      padding: 28px !important;
-    }
-    .info-item {
-      border-bottom: 1px solid var(--c-border) !important;
-      padding: 16px 0 !important;
-      gap: 16px;
-    }
-    .info-item:last-child { border-bottom: none !important; }
-    .info-item i {
-      color: var(--c-amber) !important;
-      font-size: 1.4rem;
-      width: 44px;
-      height: 44px;
-      background: rgba(232,160,32,0.1);
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-    }
-    .info-item h3 {
-      font-size: 0.85rem !important;
-      font-weight: 700 !important;
-      color: var(--c-amber) !important;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      margin-bottom: 2px !important;
-    }
-    .info-item p {
-      color: var(--c-text) !important;
-      margin: 0 !important;
-      font-size: 0.9rem !important;
-    }
-
-    /* Contact Form */
-    #contactForm {
-      background: var(--c-card) !important;
-      border: 1px solid var(--c-border) !important;
-      border-radius: var(--radius) !important;
-      padding: 32px !important;
-    }
-    #contactForm label {
-      font-size: 0.82rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      color: var(--c-muted) !important;
-      margin-bottom: 6px;
-      display: block;
-    }
-    #contactForm .form-control {
-      background: rgba(255,255,255,0.04) !important;
-      border: 1px solid var(--c-border) !important;
-      color: var(--c-text) !important;
-      border-radius: 8px !important;
-      padding: 12px 16px !important;
-      font-family: var(--font-body) !important;
-      font-size: 0.92rem !important;
-      transition: border-color 0.2s, box-shadow 0.2s;
-    }
-    #contactForm .form-control:focus {
-      background: rgba(255,255,255,0.06) !important;
-      border-color: var(--c-amber) !important;
-      box-shadow: 0 0 0 3px rgba(232,160,32,0.12) !important;
-      outline: none;
-      color: var(--c-heading) !important;
-    }
-    #contactForm .form-control::placeholder { color: rgba(255,255,255,0.2) !important; }
-
-    #contactForm textarea.form-control { resize: vertical; min-height: 140px; }
-
-    #contact-btn {
-      background: var(--c-amber) !important;
-      color: #0b0b0e !important;
-      border: none !important;
-      border-radius: 8px !important;
-      padding: 13px 36px !important;
-      font-family: var(--font-head) !important;
-      font-size: 0.95rem !important;
-      font-weight: 700 !important;
-      letter-spacing: 0.02em;
-      cursor: pointer;
-      transition: background 0.2s, transform 0.15s;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-    }
-    #contact-btn:hover {
-      background: var(--c-amber-lt) !important;
-      transform: translateY(-2px);
-    }
-    #contact-btn:disabled {
-      opacity: 0.6;
-      cursor: not-allowed;
-      transform: none !important;
-    }
-
-    #form-status {
-      font-size: 0.9rem;
-      padding: 12px 18px;
-      border-radius: 8px;
-      display: none;
-      margin-top: 12px;
-    }
-    #form-status.success {
-      display: block;
-      background: rgba(16, 185, 129, 0.1);
-      border: 1px solid rgba(16, 185, 129, 0.4);
-      color: #10b981;
-    }
-    #form-status.error {
-      display: block;
-      background: rgba(239, 68, 68, 0.1);
-      border: 1px solid rgba(239, 68, 68, 0.4);
-      color: #ef4444;
-    }
-
-    /* =============================================
-       FOOTER
-    ============================================= */
-    #footer.footer {
-      background: var(--c-sidebar) !important;
-      border-top: 1px solid var(--c-border) !important;
-    }
-    .footer .copyright p { color: var(--c-muted) !important; font-size: 0.85rem !important; }
-
-    /* =============================================
-       SCROLL TOP
-    ============================================= */
-    #scroll-top {
-      background: var(--c-amber) !important;
-      color: #0b0b0e !important;
-      border-radius: 10px !important;
-      width: 40px !important;
-      height: 40px !important;
-    }
-
-    /* =============================================
-       PRELOADER
-    ============================================= */
-    #preloader {
-      background: var(--c-bg) !important;
-    }
-    #preloader::before {
-      border-color: rgba(255,255,255,0.05) !important;
-      border-top-color: var(--c-amber) !important;
-    }
-
-    /* =============================================
-       SWIPER PAGINATION
-    ============================================= */
-    .swiper-pagination-bullet { background: var(--c-muted) !important; }
-    .swiper-pagination-bullet-active { background: var(--c-amber) !important; }
-
-    /* =============================================
-       UTILITY / MISC
-    ============================================= */
-    section { padding: 80px 0 !important; }
-
-    .light-background { background: var(--c-surface) !important; }
-
-    /* AOS animations look better on dark */
-    [data-aos] { will-change: transform, opacity; }
-
-    /* Isotope items gap */
-    .portfolio-item { margin-bottom: 24px; }
-  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dhimant Suthar — Unified Communications Engineer & AI-Powered UCC Architect</title>
+  <meta name="description" content="Dhimant Suthar — Staff Engineer (Unified Communication) at NVIDIA, Munich. 12+ years across Microsoft Teams Rooms, VoIP, multi-vendor UC, cloud, and AI-driven automation.">
+  <meta name="keywords" content="Dhimant Suthar, Unified Communications, Microsoft Teams Rooms, MTR, VoIP, NVIDIA, Munich, React, Azure, AI, RAG">
+
+  <link rel="icon" href="assets/img/favicon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="assets/css/style.css">
 </head>
+<body>
 
-<body class="index-page">
+  <!-- 3D background -->
+  <canvas id="bg-canvas" aria-hidden="true"></canvas>
 
-  <!-- ==============================
-       SIDEBAR / HEADER
-  =============================== -->
-  <header id="header" class="header dark-background d-flex flex-column">
-    <i class="header-toggle d-xl-none bi bi-list"></i>
-
-    <div class="profile-img text-center mt-2 mb-3">
-      <img src="assets/img/apple-touch-icon2.jpg" alt="Dhimant Suthar" class="img-fluid rounded-circle" style="width:110px;height:110px;object-fit:cover;">
-    </div>
-
-    <a href="index.html" class="logo d-flex align-items-center justify-content-center mb-2">
-      <h1 class="sitename">Dhimant Suthar</h1>
-    </a>
-
-    <div class="social-links text-center mb-3">
-      <a href="https://www.linkedin.com/in/dhimant-suthar-sagittarius" target="_blank" class="linkedin" title="LinkedIn"><i class="bi bi-linkedin"></i></a>
-      <a href="/cdn-cgi/l/email-protection#5d393534303c33292e2829353c2f6a6c1d3a303c3431733e3230" class="email" title="Email"><i class="bi bi-envelope"></i></a>
-    </div>
-
-    <nav id="navmenu" class="navmenu">
-      <ul>
-        <li><a href="#hero" class="active"><i class="bi bi-house navicon"></i> Home</a></li>
-        <li><a href="#about"><i class="bi bi-person navicon"></i> About</a></li>
-        <li><a href="#skills"><i class="bi bi-graph-up navicon"></i> Skills</a></li>
-        <li><a href="#resume"><i class="bi bi-file-earmark-text navicon"></i> Resume</a></li>
-        <li><a href="#portfolio"><i class="bi bi-images navicon"></i> Projects</a></li>
-        <li><a href="#services"><i class="bi bi-cpu navicon"></i> Expertise</a></li>
-        <li><a href="#testimonials"><i class="bi bi-award navicon"></i> Awards</a></li>
-        <li><a href="#contact"><i class="bi bi-envelope navicon"></i> Contact</a></li>
-      </ul>
+  <!-- ============ NAV ============ -->
+  <header class="nav" id="nav">
+    <a class="nav__logo" href="#hero">DS<span>.</span></a>
+    <nav class="nav__links" id="nav-links">
+      <a href="#about">About</a>
+      <a href="#experience">Experience</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#life">Life</a>
+      <a href="#contact" class="nav__cta">Contact</a>
     </nav>
-  </header><!-- /Header -->
+    <button class="nav__burger" id="nav-burger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </header>
 
-  <main class="main">
-
-    <!-- ==============================
-         HERO SECTION
-    =============================== -->
-    <section id="hero" class="hero section dark-background">
-      <img src="" alt="" style="display:none">
-      <div class="container" data-aos="fade-up" data-aos-delay="100">
-        <h2>Dhimant Suthar</h2>
-        <p>I'm a&nbsp;<span class="typed" data-typed-items="UC Engineer,Solutions Architect,Cloud Specialist,Problem Solver">UC Engineer</span><span class="typed-cursor typed-cursor--blink" aria-hidden="true"></span></p>
-        <p style="margin-top:24px; font-size:0.95rem; color:var(--c-muted); max-width:480px; line-height:1.7;">
-          11+ years designing and delivering Voice, Video &amp; Data solutions across enterprise environments.
-        </p>
-        <div style="margin-top:32px; display:flex; gap:12px; flex-wrap:wrap;">
-          <a href="#contact" style="background:var(--c-amber);color:#000;padding:12px 28px;border-radius:8px;font-family:var(--font-head);font-weight:700;font-size:0.9rem;transition:all 0.2s;" onmouseover="this.style.background='#f4b84a'" onmouseout="this.style.background='#e8a020'">Get in Touch</a>
-          <a href="#resume" style="background:transparent;color:var(--c-text);padding:12px 28px;border-radius:8px;font-family:var(--font-head);font-weight:600;font-size:0.9rem;border:1px solid rgba(255,255,255,0.15);transition:all 0.2s;" onmouseover="this.style.borderColor='var(--c-amber)';this.style.color='var(--c-amber)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.15)';this.style.color='var(--c-text)'">View Resume</a>
-        </div>
+  <!-- ============ HERO ============ -->
+  <section class="hero" id="hero">
+    <div class="hero__inner">
+      <p class="hero__eyebrow reveal">Munich, Germany · Staff Engineer @ <strong>NVIDIA</strong></p>
+      <h1 class="hero__title reveal">Dhimant<br><span class="grad">Suthar</span></h1>
+      <p class="hero__typed reveal"><span id="typed"></span><span class="caret"></span></p>
+      <p class="hero__blurb reveal">
+        12+ years engineering large-scale enterprise collaboration — from Avaya dial-tone to
+        AI-assisted global video estates. I keep ~1600 conference rooms across the planet
+        running at 99.9%+ uptime, and build the tools that make it possible.
+      </p>
+      <div class="hero__actions reveal">
+        <a class="btn btn--solid" href="#projects">View my work</a>
+        <a class="btn btn--ghost" href="#contact">Get in touch</a>
       </div>
-    </section><!-- /Hero -->
-
-    <!-- ==============================
-         ABOUT SECTION
-    =============================== -->
-    <section id="about" class="about section">
-      <div class="container section-title" data-aos="fade-up">
-        <h2>About</h2>
-        <p>Innovative UC engineer with a passion for cloud technologies and AI, combined with leadership experience and a love of learning.</p>
+      <div class="hero__social reveal">
+        <a href="https://www.linkedin.com/in/dhimant-suthar-sagittarius" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05a3.74 3.74 0 0 1 3.37-1.85c3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z"/></svg>
+        </a>
+        <a href="https://github.com/dhimant6" target="_blank" rel="noopener" aria-label="GitHub">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M12 .5A11.5 11.5 0 0 0 .5 12a11.5 11.5 0 0 0 7.86 10.91c.58.11.79-.25.79-.56v-1.96c-3.2.7-3.88-1.54-3.88-1.54-.52-1.33-1.28-1.68-1.28-1.68-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.03 1.75 2.69 1.25 3.34.95.1-.74.4-1.25.72-1.53-2.55-.29-5.23-1.28-5.23-5.68 0-1.26.45-2.28 1.18-3.09-.12-.29-.51-1.46.11-3.05 0 0 .96-.31 3.16 1.18a11 11 0 0 1 5.76 0c2.2-1.49 3.16-1.18 3.16-1.18.62 1.59.23 2.76.11 3.05.74.81 1.18 1.83 1.18 3.09 0 4.41-2.69 5.38-5.25 5.67.41.35.77 1.05.77 2.12v3.14c0 .31.21.68.8.56A11.5 11.5 0 0 0 23.5 12 11.5 11.5 0 0 0 12 .5z"/></svg>
+        </a>
+        <a href="mailto:dhimantsuthar71@gmail.com" aria-label="Email">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2.5" y="4.5" width="19" height="15" rx="2.5"/><path d="m3.5 6.5 8.5 6.5 8.5-6.5"/></svg>
+        </a>
       </div>
+    </div>
+    <a class="hero__scroll" href="#about" aria-label="Scroll down"><span></span></a>
+  </section>
 
-      <div class="container" data-aos="fade-up" data-aos-delay="100">
-        <div class="row gy-4 justify-content-center align-items-center">
-          <div class="col-lg-4 text-center">
-            <img src="assets/img/my-profile-img.jpg" class="img-fluid" alt="Dhimant Suthar" style="border-radius:16px; max-width:280px; border:2px solid rgba(255,255,255,0.07); box-shadow: 0 24px 60px rgba(0,0,0,0.5);">
+  <main>
+    <!-- ============ ABOUT ============ -->
+    <section class="section" id="about">
+      <div class="section__head reveal">
+        <span class="section__kicker">01 · About</span>
+        <h2>Engineer of rooms<br>that <span class="grad">just work</span></h2>
+      </div>
+      <div class="about">
+        <div class="about__photo reveal tilt">
+          <div class="about__photo-frame">
+            <img src="assets/img/my-profile-img.jpg" alt="Dhimant Suthar" loading="lazy">
           </div>
-          <div class="col-lg-8 content">
-            <h2>Unified Communications Engineer &amp; Solutions Architect</h2>
-            <p class="fst-italic py-3">
-              Humbled and grateful to have completed 10+ major UC/CC projects successfully. My work spans Microsoft Teams migrations, Avaya and Cisco deployments, contact center solutions, and cloud transformations.
-            </p>
-            <div class="row">
-              <div class="col-lg-6">
-                <ul style="list-style:none; padding:0;">
-                  <li style="padding:6px 0; border-bottom:1px solid rgba(255,255,255,0.05);">
-                    <i class="bi bi-chevron-right" style="color:var(--c-amber);font-size:12px;margin-right:8px;"></i>
-                    <strong>Birthday:</strong>&nbsp;<span style="color:var(--c-muted);">6 April 1991</span>
-                  </li>
-                  <li style="padding:6px 0; border-bottom:1px solid rgba(255,255,255,0.05);">
-                    <i class="bi bi-chevron-right" style="color:var(--c-amber);font-size:12px;margin-right:8px;"></i>
-                    <strong>City:</strong>&nbsp;<span style="color:var(--c-muted);">Vadodara, Gujarat, IN</span>
-                  </li>
-                  <li style="padding:6px 0;">
-                    <i class="bi bi-chevron-right" style="color:var(--c-amber);font-size:12px;margin-right:8px;"></i>
-                    <strong>Languages:</strong>&nbsp;<span style="color:var(--c-muted);">English, Deutsch, Gujarati, Hindi</span>
-                  </li>
-                </ul>
-              </div>
-              <div class="col-lg-6">
-                <ul style="list-style:none; padding:0;">
-                  <li style="padding:6px 0; border-bottom:1px solid rgba(255,255,255,0.05);">
-                    <i class="bi bi-chevron-right" style="color:var(--c-amber);font-size:12px;margin-right:8px;"></i>
-                    <strong>Degree:</strong>&nbsp;<span style="color:var(--c-muted);">BE (E&amp;C) + MBA (PM)</span>
-                  </li>
-                  <li style="padding:6px 0; border-bottom:1px solid rgba(255,255,255,0.05);">
-                    <i class="bi bi-chevron-right" style="color:var(--c-amber);font-size:12px;margin-right:8px;"></i>
-                    <strong>Email:</strong>&nbsp;<a href="/cdn-cgi/l/email-protection#ee8a8687838f809a9d9b9a868f9cd9dfae89838f8782c08d8183" style="color:var(--c-amber); font-size:0.88rem;"><span class="__cf_email__" data-cfemail="56323e3f3b3738222523223e3724616716313b373f3a7835393b">[email&#160;protected]</span></a>
-                  </li>
-                  <li style="padding:6px 0;">
-                    <i class="bi bi-chevron-right" style="color:var(--c-amber);font-size:12px;margin-right:8px;"></i>
-                    <strong>Available:</strong>&nbsp;<span style="color:#10b981; font-weight:600;">Open to Opportunities</span>
-                  </li>
-                </ul>
-              </div>
-            </div>
-            <p class="py-3" style="color:var(--c-muted); font-size:0.9rem;">
-              Beyond work — former college cricket team captain, passionate dancer, and avid reader. Leadership, resilience, and curiosity define my approach to life and technology alike.
-            </p>
+          <div class="about__badge">12+ <small>years in UC</small></div>
+        </div>
+        <div class="about__text">
+          <p class="reveal">
+            I'm a Senior Unified Communications engineer who has evolved from a core
+            telecom &amp; VoIP background into an <strong>AI-powered UCC architect</strong> —
+            bridging legacy collaboration infrastructure with modern, automated,
+            cloud-native platforms.
+          </p>
+          <p class="reveal">
+            At <strong>NVIDIA</strong> I manage a global estate of video conferencing devices,
+            act as Tier-3 SME for Microsoft Teams Rooms, Pexip CVI and multi-vendor AV,
+            and build internal platforms with React, Databricks and Python — including
+            LLM/RAG-assisted log analysis that cuts troubleshooting from hours to minutes.
+          </p>
+          <div class="about__stats">
+            <div class="stat reveal"><span class="stat__num" data-count="12" data-suffix="+">0</span><span class="stat__label">Years experience</span></div>
+            <div class="stat reveal"><span class="stat__num" data-count="1600" data-suffix="+">0</span><span class="stat__label">VC devices managed</span></div>
+            <div class="stat reveal"><span class="stat__num" data-count="99.9" data-suffix="%" data-decimals="1">0</span><span class="stat__label">Platform uptime</span></div>
+            <div class="stat reveal"><span class="stat__num" data-count="16" data-suffix="">0</span><span class="stat__label">Sites · 12 countries</span></div>
           </div>
         </div>
       </div>
-    </section><!-- /About -->
+    </section>
 
-    <!-- ==============================
-         STATS SECTION
-    =============================== -->
-    <section id="stats" class="stats section">
-      <div class="container" data-aos="fade-up" data-aos-delay="100">
-        <div class="row gy-4">
-
-          <div class="col-lg-3 col-md-6">
-            <div class="stats-item">
-              <i class="bi bi-calendar-check"></i>
-              <span data-purecounter-start="0" data-purecounter-end="11" data-purecounter-duration="1" class="purecounter"></span>
-              <p><strong>Years Experience</strong> <span>in UC &amp; Networking</span></p>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-6">
-            <div class="stats-item">
-              <i class="bi bi-journal-richtext"></i>
-              <span data-purecounter-start="0" data-purecounter-end="15" data-purecounter-duration="1" class="purecounter"></span>
-              <p><strong>Projects</strong> <span>UC, AV &amp; Networking</span></p>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-6">
-            <div class="stats-item">
-              <i class="bi bi-building"></i>
-              <span data-purecounter-start="0" data-purecounter-end="3" data-purecounter-duration="1" class="purecounter"></span>
-              <p><strong>Organizations</strong> <span>AGC, WellsFargo, Infosys</span></p>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-6">
-            <div class="stats-item">
-              <i class="bi bi-cloud-check"></i>
-              <span data-purecounter-start="0" data-purecounter-end="4" data-purecounter-duration="1" class="purecounter"></span>
-              <p><strong>Cloud Certifications</strong> <span>Azure, GCP, OCI, AWS</span></p>
-            </div>
-          </div>
-
-        </div>
+    <!-- ============ EXPERIENCE ============ -->
+    <section class="section" id="experience">
+      <div class="section__head reveal">
+        <span class="section__kicker">02 · Experience</span>
+        <h2>A decade+ of<br><span class="grad">keeping people connected</span></h2>
       </div>
-    </section><!-- /Stats -->
-
-    <!-- ==============================
-         SKILLS SECTION
-    =============================== -->
-    <section id="skills" class="skills section">
-      <div class="container section-title" data-aos="fade-up">
-        <h2>Skills</h2>
-        <p>Core technical competencies built over 11+ years of hands-on enterprise delivery.</p>
-      </div>
-
-      <div class="container" data-aos="fade-up" data-aos-delay="100">
-        <div class="row skills-content skills-animation">
-          <div class="col-lg-6">
-            <div class="progress">
-              <span class="skill"><span>UC / Contact Center</span> <i class="val">95%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" style="width:95%" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-            </div>
-            <div class="progress">
-              <span class="skill"><span>VoIP &amp; SIP</span> <i class="val">100%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" style="width:100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-            </div>
-            <div class="progress">
-              <span class="skill"><span>Cloud (Azure / GCP / AWS)</span> <i class="val">90%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" style="width:90%" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-            </div>
+      <div class="timeline">
+        <article class="tl-item reveal">
+          <div class="tl-item__meta"><span class="tl-item__dates">Aug 2025 — Present</span><span class="tl-item__loc">Munich, DE</span></div>
+          <div class="tl-item__card tilt">
+            <h3>Staff Engineer — Unified Communication <span class="tl-item__co">NVIDIA</span></h3>
+            <ul>
+              <li>Monitoring &amp; management for ~1600 global VC devices — uptime improved to 99.9%+.</li>
+              <li>Led end-to-end VC infrastructure design &amp; refresh across 16 sites in 12 countries (EMEA).</li>
+              <li>Built a centralized UCC inventory &amp; lifecycle platform (React + Databricks), replacing Excel-based tracking.</li>
+              <li>Pioneered LLM/RAG-assisted log analysis and issue detection with Python.</li>
+              <li>Tier-3 SME for MTR, Pexip CVI, Cisco, Poly &amp; Logitech environments.</li>
+            </ul>
           </div>
-          <div class="col-lg-6">
-            <div class="progress">
-              <span class="skill"><span>Automation (Python / PS)</span> <i class="val">80%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" style="width:80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-            </div>
-            <div class="progress">
-              <span class="skill"><span>Microsoft Teams / O365</span> <i class="val">95%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" style="width:95%" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-            </div>
-            <div class="progress">
-              <span class="skill"><span>Project Management</span> <i class="val">70%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" style="width:70%" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-            </div>
+        </article>
+        <article class="tl-item reveal">
+          <div class="tl-item__meta"><span class="tl-item__dates">Aug 2022 — Jul 2025</span><span class="tl-item__loc">Zurich, CH</span></div>
+          <div class="tl-item__card tilt">
+            <h3>Senior Consultant — Unified Communications <span class="tl-item__co">Infosys</span></h3>
+            <ul>
+              <li>Administered Microsoft Teams Rooms across Poly, AudioCodes, Cisco &amp; Logitech fleets.</li>
+              <li>Integrated MS Teams with existing Cisco &amp; Avaya telephony as part of the migration team.</li>
+              <li>RCA on recurring AV/network issues; enforced network security (ACLs, firewall rules, port security).</li>
+            </ul>
+          </div>
+        </article>
+        <article class="tl-item reveal">
+          <div class="tl-item__meta"><span class="tl-item__dates">Apr 2021 — Aug 2022</span><span class="tl-item__loc">Pune, IN</span></div>
+          <div class="tl-item__card tilt">
+            <h3>Senior Consultant <span class="tl-item__co">Infosys</span></h3>
+            <ul>
+              <li>Planned the legacy-UC → MS Teams transition for the world's largest wealth-management bank (UBS).</li>
+              <li>Liaised with global stakeholders, translating technical requirements into actionable plans.</li>
+            </ul>
+          </div>
+        </article>
+        <article class="tl-item reveal">
+          <div class="tl-item__meta"><span class="tl-item__dates">Apr 2016 — Apr 2021</span><span class="tl-item__loc">Bengaluru, IN</span></div>
+          <div class="tl-item__card tilt">
+            <h3>UC Engineer &amp; VoIP Senior Analyst <span class="tl-item__co">Wells Fargo</span></h3>
+            <ul>
+              <li>Maintained &amp; upgraded Cisco CUCM and IP phone fleets (78xx → 88xx) for enterprise voice.</li>
+              <li>Key role in the legacy Avaya → Cisco transition; administered Cisco Room Series devices.</li>
+              <li>Led a platform team of 3 for Avaya/Cisco UC solutions.</li>
+            </ul>
+          </div>
+        </article>
+        <article class="tl-item reveal">
+          <div class="tl-item__meta"><span class="tl-item__dates">Oct 2013 — Apr 2016</span><span class="tl-item__loc">West India</span></div>
+          <div class="tl-item__card tilt">
+            <h3>VoIP Engineer — Services <span class="tl-item__co">AGC Networks</span></h3>
+            <ul>
+              <li>Implemented an Emergency Contact Center (Dial 100) for an Indian state government in a record 17 days.</li>
+              <li>Delivered voice, video &amp; data solutions for 20+ clients on Avaya Aura — incl. 4 Fortune 500 companies.</li>
+            </ul>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ============ SKILLS ============ -->
+    <section class="section" id="skills">
+      <div class="section__head reveal">
+        <span class="section__kicker">03 · Skills</span>
+        <h2>From SIP trunks<br>to <span class="grad">RAG pipelines</span></h2>
+      </div>
+      <div class="skills">
+        <div class="skill-card reveal tilt">
+          <h3>Unified Communications</h3>
+          <div class="chips">
+            <span>Microsoft Teams &amp; MTR</span><span>VoIP / SIP</span><span>Cisco CUCM</span>
+            <span>Cisco Room Series</span><span>Avaya Aura</span><span>Poly</span>
+            <span>Pexip CVI</span><span>AudioCodes</span><span>Logitech</span><span>Microsoft 365</span>
           </div>
         </div>
-      </div>
-    </section><!-- /Skills -->
-
-    <!-- ==============================
-         RESUME SECTION
-    =============================== -->
-    <section id="resume" class="resume section">
-      <div class="container section-title" data-aos="fade-up">
-        <h2>Resume</h2>
-        <p>Work experience and educational background.</p>
-      </div>
-
-      <div class="container">
-        <div class="row">
-
-          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
-            <h3 class="resume-title">Summary</h3>
-            <div class="resume-item pb-0">
-              <h4>Dhimant Suthar</h4>
-              <p><em>Innovative and deadline-driven Unified Communications Engineer with 11+ years of experience designing and implementing Voice, Video and Data solutions from initial concept to final deliverable.</em></p>
-              <ul>
-                <li>Vadodara, Gujarat, India 391330</li>
-                <li><a href="/cdn-cgi/l/email-protection#593d31303438372d2a2c2d31382b6e68193e34383035773a3634"><span class="__cf_email__" data-cfemail="3e5a5657535f504a4d4b4a565f4c090f7e59535f5752105d5153">[email&#160;protected]</span></a></li>
-              </ul>
-            </div>
-
-            <h3 class="resume-title">Education</h3>
-            <div class="resume-item">
-              <h4>Master of Business Administration</h4>
-              <h5>2015 – 2018</h5>
-              <p><em>Sikkim Manipal Institute DE</em></p>
-              <p>Specialization: Project Management</p>
-            </div>
-            <div class="resume-item">
-              <h4>Bachelor of Engineering — Electronics &amp; Communications</h4>
-              <h5>2009 – 2013</h5>
-              <p><em>Gujarat Technological University, IN</em></p>
-              <p>Specialization: Electronics &amp; Communications Engineering</p>
-            </div>
+        <div class="skill-card reveal tilt">
+          <h3>Cloud &amp; DevOps</h3>
+          <div class="chips">
+            <span>Azure (AZ-304)</span><span>Kubernetes</span><span>CI/CD</span>
+            <span>Databricks</span><span>Monitoring &amp; Observability</span><span>Network Security</span>
           </div>
-
-          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
-            <h3 class="resume-title">Professional Experience</h3>
-
-            <div class="resume-item">
-              <h4>Senior Consultant</h4>
-              <h5>April 2021 – Present</h5>
-              <p><em>Infosys, Pune, India</em></p>
-              <ul>
-                <li>Service delivery &amp; management for migration of legacy UC solutions to Microsoft Teams.</li>
-                <li>Collaborated with Microsoft to resolve on-premises challenges: voice recording, Direct Routing, CDR, voicemail.</li>
-                <li>Responsible for planning and executing Teams-Only pilot and full PSTN migration across the bank.</li>
-              </ul>
-            </div>
-
-            <div class="resume-item">
-              <h4>Network Engineer — Sr. Analyst / NOA 3</h4>
-              <h5>April 2016 – April 2021</h5>
-              <p><em>Wells Fargo, Bangalore, India</em></p>
-              <ul>
-                <li>Analysed existing Avaya and Cisco voice networks; recommended and implemented solutions for new sites, capacity, and tech refresh.</li>
-                <li>Engineering, configuration, maintenance, and upgrade of the bank's VoIP deployment and supporting applications.</li>
-                <li>Conducted third-tier support for VoIP infrastructure using BMC Remedy.</li>
-              </ul>
-            </div>
-
-            <div class="resume-item">
-              <h4>Engineer — Services</h4>
-              <h5>Oct 2013 – April 2016</h5>
-              <p><em>AGC Networks Ltd., India</em></p>
-              <ul>
-                <li>Proactively maintained and designed Voice and Network infrastructure across enterprise to ensure high availability.</li>
-                <li>Implemented Avaya Voice UC/CC solution for Madhya Pradesh government Dial 100 project in record 17 days.</li>
-              </ul>
-            </div>
+        </div>
+        <div class="skill-card reveal tilt">
+          <h3>Development</h3>
+          <div class="chips">
+            <span>React</span><span>TypeScript</span><span>Node.js</span>
+            <span>Python</span><span>Tailwind CSS</span><span>REST APIs</span>
           </div>
-
+        </div>
+        <div class="skill-card reveal tilt">
+          <h3>AI &amp; Automation</h3>
+          <div class="chips">
+            <span>LLM Integration</span><span>RAG</span><span>Agentic AI</span>
+            <span>Prompt Engineering</span><span>Automated Log Analysis</span>
+          </div>
         </div>
       </div>
-    </section><!-- /Resume -->
-
-    <!-- ==============================
-         PORTFOLIO SECTION
-    =============================== -->
-    <section id="portfolio" class="portfolio section">
-      <div class="container section-title" data-aos="fade-up">
-        <h2>Personal Projects</h2>
-        <p>Selected personal &amp; professional projects.</p>
-      </div>
-
-      <div class="container">
-        <div class="isotope-layout" data-default-filter="*" data-layout="masonry" data-sort="original-order">
-
-          <ul class="portfolio-filters isotope-filters" data-aos="fade-up" data-aos-delay="100">
-            <li data-filter="*" class="filter-active">All</li>
-            <li data-filter=".filter-app">App</li>
-            <li data-filter=".filter-product">Product</li>
+      <div class="creds reveal">
+        <div class="creds__col">
+          <h4>Certifications</h4>
+          <ul>
+            <li>AZ-304 — Microsoft Azure Architect Design</li>
+            <li>Microsoft Certified: Azure Data Fundamentals</li>
+            <li>Microsoft Certified: Azure AI Fundamentals</li>
           </ul>
-
-          <div class="row gy-4 isotope-container" data-aos="fade-up" data-aos-delay="200">
-
-            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app">
-              <div class="portfolio-content h-100">
-                <img src="assets/img/portfolio/app-1.jpg" class="img-fluid" alt="WebRTC IM App">
-                <div class="portfolio-info">
-                  <h4>WebRTC Messenger</h4>
-                  <p>IM and messaging app based on WebRTC</p>
-                  <a href="assets/img/portfolio/app-1.jpg" title="WebRTC Messenger" data-gallery="portfolio-gallery-app" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-product">
-              <div class="portfolio-content h-100">
-                <img src="assets/img/portfolio/product-1.jpg" class="img-fluid" alt="PowerBI Dashboard">
-                <div class="portfolio-info">
-                  <h4>PowerBI Analytics</h4>
-                  <p>PowerBI solutions for data analytics &amp; reporting</p>
-                  <a href="assets/img/portfolio/product-1.jpg" title="PowerBI Analytics" data-gallery="portfolio-gallery-product" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                </div>
-              </div>
-            </div>
-
-          </div>
+        </div>
+        <div class="creds__col">
+          <h4>Honors &amp; Awards</h4>
+          <ul>
+            <li>Wells Fargo Champions — Living Our Values</li>
+            <li>Achieving Excellence × 4</li>
+            <li>CEO Performance Plus</li>
+          </ul>
+        </div>
+        <div class="creds__col">
+          <h4>Languages</h4>
+          <ul>
+            <li>English &amp; Hindi — full professional</li>
+            <li>Gujarati — native · German — professional</li>
+            <li>French — elementary</li>
+          </ul>
         </div>
       </div>
-    </section><!-- /Portfolio -->
+    </section>
 
-    <!-- ==============================
-         EXPERTISE (SERVICES) SECTION
-    =============================== -->
-    <section id="services" class="services section">
-      <div class="container section-title" data-aos="fade-up">
-        <h2>Expertise</h2>
-        <p>Hands-on experience across all major UC platforms — Microsoft, Cisco, Avaya, and cloud providers.</p>
+    <!-- ============ PROJECTS ============ -->
+    <section class="section" id="projects">
+      <div class="section__head reveal">
+        <span class="section__kicker">04 · Projects</span>
+        <h2>Things I've <span class="grad">built</span></h2>
       </div>
 
-      <div class="container">
-        <div class="row gy-4">
-
-          <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="100">
-            <div class="icon flex-shrink-0"><i class="bi bi-microsoft"></i></div>
-            <div>
-              <h4 class="title">Microsoft Teams</h4>
-              <p class="description">Direct Routing, policy packages, interoperability, QoS, Teams Phone deployments.</p>
-            </div>
+      <!-- Featured project -->
+      <article class="feature reveal">
+        <div class="feature__media tilt">
+          <img src="assets/img/uc-inventory-demo.gif" alt="UC Inventory — LCM & PM product tour" loading="lazy">
+        </div>
+        <div class="feature__body">
+          <span class="feature__tag">Featured · Live</span>
+          <h3>UC Inventory — LCM &amp; PM</h3>
+          <p>
+            A management console for unified-communications deployments: projects, the devices
+            deployed under them (Poly · Cisco Webex · Microsoft Teams Rooms) and the phone numbers
+            assigned across them — with connector health, analytics, an audit log, and a 3D dashboard hero.
+          </p>
+          <div class="chips chips--sm">
+            <span>TypeScript</span><span>React 18</span><span>Vite</span><span>Express</span>
+            <span>Tailwind</span><span>React Three Fiber</span><span>Vitest · 43 tests</span>
           </div>
-
-          <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="200">
-            <div class="icon flex-shrink-0"><i class="bi bi-telephone-fill"></i></div>
-            <div>
-              <h4 class="title">Avaya</h4>
-              <p class="description">Avaya CM, Session Manager, System Manager, G650/G450 Gateways, CMS.</p>
-            </div>
+          <div class="feature__links">
+            <a class="btn btn--solid btn--sm" href="https://uc-inventory-lcm-and-pm.onrender.com/" target="_blank" rel="noopener">Live demo ↗</a>
+            <a class="btn btn--ghost btn--sm" href="https://github.com/dhimant6/UC-Inventory-LCM-and-PM" target="_blank" rel="noopener">GitHub ↗</a>
           </div>
+          <p class="feature__note">⏳ Free-tier host — first request may take ~30&nbsp;s to wake the server.</p>
+        </div>
+      </article>
 
-          <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="300">
-            <div class="icon flex-shrink-0"><i class="bi bi-router-fill"></i></div>
-            <div>
-              <h4 class="title">Cisco</h4>
-              <p class="description">Cisco CUCM, Emergency Responder, Unity, UCCX Contact Center.</p>
-            </div>
-          </div>
+      <div class="proj-grid">
+        <article class="proj-card reveal tilt">
+          <div class="proj-card__icon">🛗</div>
+          <h3>Visitor Management SaaS</h3>
+          <p>Architected and built from the ground up with a DevOps-centric approach — automated
+             CI/CD pipelines deployed on Kubernetes for high availability and scale.</p>
+          <div class="chips chips--sm"><span>SaaS</span><span>Kubernetes</span><span>CI/CD</span></div>
+        </article>
+        <article class="proj-card reveal tilt">
+          <div class="proj-card__icon">🤖</div>
+          <h3>LLM-Assisted VC Troubleshooting</h3>
+          <p>LLM &amp; RAG integrations into enterprise video-conferencing ecosystems — automated log
+             analysis, device troubleshooting and intelligent issue resolution.</p>
+          <div class="chips chips--sm"><span>Python</span><span>RAG</span><span>Agentic AI</span></div>
+        </article>
+        <article class="proj-card reveal tilt">
+          <div class="proj-card__icon">🌐</div>
+          <h3>This Portfolio</h3>
+          <p>A hand-rolled single-page site with a real-time Three.js particle field, scroll-driven
+             reveals and 3D-tilt interactions. No frameworks, no build step.</p>
+          <div class="chips chips--sm"><span>Three.js</span><span>WebGL</span><span>Vanilla JS</span></div>
+        </article>
+      </div>
+    </section>
 
-          <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="400">
-            <div class="icon flex-shrink-0"><i class="bi bi-globe2"></i></div>
-            <div>
-              <h4 class="title">VoIP Protocols</h4>
-              <p class="description">SIP, H.323, WebRTC, POTS, ISDN (PRI/BRI) — deep protocol expertise.</p>
-            </div>
-          </div>
+    <!-- ============ LIFE / GALLERY ============ -->
+    <section class="section" id="life">
+      <div class="section__head reveal">
+        <span class="section__kicker">05 · Off-screen</span>
+        <h2>Beyond the <span class="grad">server room</span></h2>
+      </div>
+      <div class="gallery">
+        <figure class="gallery__item reveal tilt"><img src="assets/img/IMG_5740.jpg" alt="Dhimant in the snow" loading="lazy"></figure>
+        <figure class="gallery__item reveal tilt"><img src="assets/img/E64D8994-3121-4A58-844E-BD88C4BA6CC1.jpg" alt="Dhimant" loading="lazy"></figure>
+        <figure class="gallery__item reveal tilt"><img src="assets/img/IMG_6152.JPG" alt="Dhimant on a train" loading="lazy"></figure>
+        <figure class="gallery__item reveal tilt"><img src="assets/img/IMG_5778.JPG" alt="Dhimant" loading="lazy"></figure>
+      </div>
+    </section>
 
-          <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="500">
-            <div class="icon flex-shrink-0"><i class="bi bi-cloud-fill"></i></div>
-            <div>
-              <h4 class="title">Cloud</h4>
-              <p class="description">Microsoft Azure, GCP, OCI &amp; AWS certified. Cloud migrations and architecture.</p>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="600">
-            <div class="icon flex-shrink-0"><i class="bi bi-code-slash"></i></div>
-            <div>
-              <h4 class="title">Automation &amp; Scripting</h4>
-              <p class="description">Python, JavaScript, PowerShell — automating key processes and reporting workflows.</p>
-            </div>
-          </div>
-
+    <!-- ============ CONTACT ============ -->
+    <section class="section section--contact" id="contact">
+      <div class="section__head reveal">
+        <span class="section__kicker">06 · Contact</span>
+        <h2>Let's talk about<br><span class="grad">AI-driven collaboration</span></h2>
+      </div>
+      <p class="contact__blurb reveal">
+        Open to Senior UC / Collaboration / M365 / IT-Operations conversations —
+        or anything at the intersection of enterprise infrastructure and AI.
+      </p>
+      <div class="contact__cards">
+        <a class="contact-card reveal tilt" href="mailto:dhimantsuthar71@gmail.com">
+          <span class="contact-card__label">Email</span>
+          <span class="contact-card__value">dhimantsuthar71@gmail.com</span>
+        </a>
+        <a class="contact-card reveal tilt" href="tel:+4915203698366">
+          <span class="contact-card__label">Phone</span>
+          <span class="contact-card__value">+49 152 0369 8366</span>
+        </a>
+        <a class="contact-card reveal tilt" href="https://www.linkedin.com/in/dhimant-suthar-sagittarius" target="_blank" rel="noopener">
+          <span class="contact-card__label">LinkedIn</span>
+          <span class="contact-card__value">dhimant-suthar-sagittarius</span>
+        </a>
+        <div class="contact-card reveal">
+          <span class="contact-card__label">Based in</span>
+          <span class="contact-card__value">Munich, Germany 🇩🇪</span>
         </div>
       </div>
-    </section><!-- /Expertise -->
-
-    <!-- ==============================
-         AWARDS SECTION
-    =============================== -->
-    <section id="testimonials" class="testimonials section">
-      <div class="container section-title" data-aos="fade-up">
-        <h2>Awards</h2>
-        <p>Recognitions and achievements throughout my career.</p>
-      </div>
-
-      <div class="container" data-aos="fade-up" data-aos-delay="100">
-        <div class="swiper init-swiper">
-          <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script type="application/json" class="swiper-config">
-            {
-              "loop": true,
-              "speed": 600,
-              "autoplay": { "delay": 5000 },
-              "slidesPerView": "auto",
-              "pagination": { "el": ".swiper-pagination", "type": "bullets", "clickable": true },
-              "breakpoints": {
-                "320": { "slidesPerView": 1, "spaceBetween": 20 },
-                "1200": { "slidesPerView": 2, "spaceBetween": 20 }
-              }
-            }
-          </script>
-          <div class="swiper-wrapper">
-
-            <div class="swiper-slide">
-              <div class="testimonial-item">
-                <p>
-                  <i class="bi bi-quote quote-icon-left"></i>
-                  <span>WellsFargo Champions — Living Our Values Award for contribution in automating key processes and reports across the enterprise.</span>
-                  <i class="bi bi-quote quote-icon-right"></i>
-                </p>
-                <img src="assets/img/testimonials/testimonials-1.jpg" class="testimonial-img" alt="">
-                <h3>WellsFargo Champions</h3>
-                <h4>Wells Fargo</h4>
-              </div>
-            </div>
-
-            <div class="swiper-slide">
-              <div class="testimonial-item">
-                <p>
-                  <i class="bi bi-quote quote-icon-left"></i>
-                  <span>Recognised for going above and beyond key responsibility areas and contributing to major platform support across the enterprise.</span>
-                  <i class="bi bi-quote quote-icon-right"></i>
-                </p>
-                <img src="assets/img/testimonials/testimonials-2.jpg" class="testimonial-img" alt="">
-                <h3>Achieving Excellence</h3>
-                <h4>Wells Fargo</h4>
-              </div>
-            </div>
-
-            <div class="swiper-slide">
-              <div class="testimonial-item">
-                <p>
-                  <i class="bi bi-quote quote-icon-left"></i>
-                  <span>Implemented Avaya Voice UC/CC solution — part of the Dial 100 Project for Madhya Pradesh government — in a record 17 days.</span>
-                  <i class="bi bi-quote quote-icon-right"></i>
-                </p>
-                <img src="assets/img/testimonials/testimonials-3.jpg" class="testimonial-img" alt="">
-                <h3>CEO Performance Plus</h3>
-                <h4>AGC Networks Ltd.</h4>
-              </div>
-            </div>
-
-          </div>
-          <div class="swiper-pagination" style="margin-top:20px; position:relative;"></div>
-        </div>
-      </div>
-    </section><!-- /Awards -->
-
-    <!-- ==============================
-         CONTACT SECTION
-    =============================== -->
-    <section id="contact" class="contact section">
-      <div class="container section-title" data-aos="fade-up">
-        <h2>Contact</h2>
-        <p>Interested in working together or discussing an opportunity? Send me a message and I'll get back to you within a day.</p>
-      </div>
-
-      <div class="container" data-aos="fade-up" data-aos-delay="100">
-        <div class="row gy-4">
-
-          <div class="col-lg-5">
-            <div class="info-wrap">
-
-              <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="200">
-                <i class="bi bi-geo-alt flex-shrink-0"></i>
-                <div>
-                  <h3>Location</h3>
-                  <p>Vadodara, Gujarat, India 391330</p>
-                </div>
-              </div>
-
-              <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="300">
-                <i class="bi bi-envelope flex-shrink-0"></i>
-                <div>
-                  <h3>Email</h3>
-                  <p><a href="/cdn-cgi/l/email-protection#2b4f4342464a455f585e5f434a591c1a6b4c464a424705484446"><span class="__cf_email__" data-cfemail="90f4f8f9fdf1fee4e3e5e4f8f1e2a7a1d0f7fdf1f9fcbef3fffd">[email&#160;protected]</span></a></p>
-                </div>
-              </div>
-
-              <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="400">
-                <i class="bi bi-linkedin flex-shrink-0"></i>
-                <div>
-                  <h3>LinkedIn</h3>
-                  <p><a href="https://www.linkedin.com/in/dhimant-suthar-sagittarius" target="_blank">linkedin.com/in/dhimant-suthar-sagittarius</a></p>
-                </div>
-              </div>
-
-              <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="500">
-                <i class="bi bi-clock flex-shrink-0"></i>
-                <div>
-                  <h3>Availability</h3>
-                  <p style="color:#10b981; font-weight:600;">Open to opportunities</p>
-                </div>
-              </div>
-
-            </div>
-          </div>
-
-          <div class="col-lg-7">
-            <div id="contactForm" data-aos="fade-up" data-aos-delay="200">
-              <div class="row gy-4">
-
-                <div class="col-md-6">
-                  <label for="cf-name">Your Name</label>
-                  <input type="text" id="cf-name" class="form-control" placeholder="John Doe" required>
-                </div>
-
-                <div class="col-md-6">
-                  <label for="cf-email">Your Email</label>
-                  <input type="email" id="cf-email" class="form-control" placeholder="john@example.com" required>
-                </div>
-
-                <div class="col-12">
-                  <label for="cf-subject">Subject</label>
-                  <input type="text" id="cf-subject" class="form-control" placeholder="Opportunity / Collaboration / Other" required>
-                </div>
-
-                <div class="col-12">
-                  <label for="cf-message">Message</label>
-                  <textarea id="cf-message" class="form-control" rows="6" placeholder="Hi Dhimant, I'd love to discuss..." required></textarea>
-                </div>
-
-                <div class="col-12">
-                  <button id="contact-btn" type="button" onclick="submitForm()">
-                    <i class="bi bi-send"></i> Send Message
-                  </button>
-                  <div id="form-status"></div>
-                </div>
-
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </section><!-- /Contact -->
-
+    </section>
   </main>
 
-  <!-- ==============================
-       FOOTER
-  =============================== -->
-  <footer id="footer" class="footer position-relative">
-    <div class="container">
-      <div class="copyright text-center py-3">
-        <p style="color:var(--c-muted); font-size:0.85rem; margin:0;">
-          © 2025 <strong style="color:var(--c-amber);">Dhimant Suthar</strong> — All Rights Reserved
-        </p>
-      </div>
-    </div>
+  <footer class="footer">
+    <p>© 2026 Dhimant Suthar · Designed &amp; built with Three.js</p>
   </footer>
 
-  <!-- Scroll Top -->
-  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
-
-  <!-- Preloader -->
-  <div id="preloader"></div>
-
-  <!-- Vendor JS Files -->
-  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/aos/aos.js"></script>
-  <script src="assets/vendor/typed.js/typed.umd.js"></script>
-  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
-  <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
-  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
-  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-
-  <!-- Main JS File -->
-  <script src="assets/js/main.js"></script>
-
-  <!-- ==============================
-       FORMSPREE CONTACT FORM
-       STEP 1: Sign up at https://formspree.io using dhimantsuthar71@gmail.com
-       STEP 2: Click "+ New Form", name it "Portfolio Contact", click Create
-       STEP 3: Copy the form endpoint — looks like: https://formspree.io/f/xabcdefg
-       STEP 4: Replace YOUR_FORMSPREE_ID below (just the last part, e.g. xabcdefg)
-  =============================== -->
-  <script>
-    // ─── STEP 4: Paste your Formspree form ID here (the part after /f/) ───────
-    const FORMSPREE_ID = 'maqdzbov';   // e.g.  'xabcdefg'
-    // ─────────────────────────────────────────────────────────────────────────
-
-    function submitForm() {
-      const name    = document.getElementById('cf-name').value.trim();
-      const email   = document.getElementById('cf-email').value.trim();
-      const subject = document.getElementById('cf-subject').value.trim();
-      const message = document.getElementById('cf-message').value.trim();
-      const status  = document.getElementById('form-status');
-      const btn     = document.getElementById('contact-btn');
-
-      // Validation
-      if (!name || !email || !subject || !message) {
-        status.className = 'error';
-        status.textContent = '⚠ Please fill in all fields before sending.';
-        return;
-      }
-      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-        status.className = 'error';
-        status.textContent = '⚠ Please enter a valid email address.';
-        return;
-      }
-      // FORMSPREE_ID is configured — no guard needed
-
-      btn.disabled = true;
-      btn.innerHTML = '<i class="bi bi-hourglass-split"></i> Sending…';
-      status.className = '';
-      status.style.display = 'none';
-
-      fetch('https://formspree.io/f/' + FORMSPREE_ID, {
-        method: 'POST',
-        headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name, email, subject, message, _replyto: email })
-      })
-      .then(res => {
-        if (res.ok) {
-          status.className = 'success';
-          status.textContent = '✓ Message sent! I will get back to you within a day.';
-          document.getElementById('cf-name').value    = '';
-          document.getElementById('cf-email').value   = '';
-          document.getElementById('cf-subject').value = '';
-          document.getElementById('cf-message').value = '';
-        } else {
-          return res.json().then(d => { throw new Error(d.error || 'Unknown error'); });
-        }
-      })
-      .catch(err => {
-        status.className = 'error';
-        status.textContent = '✕ Something went wrong (' + err.message + '). Please email dhimantsuthar71@gmail.com directly.';
-      })
-      .finally(() => {
-        btn.disabled = false;
-        btn.innerHTML = '<i class="bi bi-send"></i> Send Message';
-      });
-    }
-
-    // Enter key to submit from text inputs
-    ['cf-name','cf-email','cf-subject'].forEach(id => {
-      document.getElementById(id).addEventListener('keydown', e => {
-        if (e.key === 'Enter') submitForm();
-      });
-    });
+  <script type="importmap">
+    { "imports": { "three": "./assets/vendor/three/three.module.min.js" } }
   </script>
-
+  <script type="module" src="assets/js/three-scene.js"></script>
+  <script src="assets/js/main.js" defer></script>
 </body>
 </html>

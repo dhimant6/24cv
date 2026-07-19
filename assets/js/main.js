@@ -1,229 +1,167 @@
-/**
-* Template Name: iPortfolio
-* Template URL: https://bootstrapmade.com/iportfolio-bootstrap-portfolio-websites-template/
-* Updated: Jun 29 2024 with Bootstrap v5.3.3
-* Author: BootstrapMade.com
-* License: https://bootstrapmade.com/license/
-*/
+// Portfolio interactions: nav, typewriter, reveals, counters, 3D tilt
+(function () {
+  'use strict';
 
-(function() {
-  "use strict";
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  /**
-   * Header toggle
-   */
-  const headerToggleBtn = document.querySelector('.header-toggle');
-
-  function headerToggle() {
-    document.querySelector('#header').classList.toggle('header-show');
-    headerToggleBtn.classList.toggle('bi-list');
-    headerToggleBtn.classList.toggle('bi-x');
+  /* ---------- nav: glass on scroll ---------- */
+  var nav = document.getElementById('nav');
+  function onScroll() {
+    nav.classList.toggle('scrolled', window.scrollY > 30);
   }
-  headerToggleBtn.addEventListener('click', headerToggle);
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
 
-  /**
-   * Hide mobile nav on same-page/hash links
-   */
-  document.querySelectorAll('#navmenu a').forEach(navmenu => {
-    navmenu.addEventListener('click', () => {
-      if (document.querySelector('.header-show')) {
-        headerToggle();
-      }
-    });
-
+  /* ---------- mobile menu ---------- */
+  var burger = document.getElementById('nav-burger');
+  var links = document.getElementById('nav-links');
+  burger.addEventListener('click', function () {
+    burger.classList.toggle('open');
+    links.classList.toggle('open');
   });
-
-  /**
-   * Toggle mobile nav dropdowns
-   */
-  document.querySelectorAll('.navmenu .toggle-dropdown').forEach(navmenu => {
-    navmenu.addEventListener('click', function(e) {
-      e.preventDefault();
-      this.parentNode.classList.toggle('active');
-      this.parentNode.nextElementSibling.classList.toggle('dropdown-active');
-      e.stopImmediatePropagation();
-    });
-  });
-
-  /**
-   * Preloader
-   */
-  const preloader = document.querySelector('#preloader');
-  if (preloader) {
-    window.addEventListener('load', () => {
-      preloader.remove();
-    });
-  }
-
-  /**
-   * Scroll top button
-   */
-  let scrollTop = document.querySelector('.scroll-top');
-
-  function toggleScrollTop() {
-    if (scrollTop) {
-      window.scrollY > 100 ? scrollTop.classList.add('active') : scrollTop.classList.remove('active');
+  links.addEventListener('click', function (e) {
+    if (e.target.tagName === 'A') {
+      burger.classList.remove('open');
+      links.classList.remove('open');
     }
-  }
-  scrollTop.addEventListener('click', (e) => {
-    e.preventDefault();
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
   });
 
-  window.addEventListener('load', toggleScrollTop);
-  document.addEventListener('scroll', toggleScrollTop);
-
-  /**
-   * Animation on scroll function and init
-   */
-  function aosInit() {
-    AOS.init({
-      duration: 600,
-      easing: 'ease-in-out',
-      once: true,
-      mirror: false
-    });
-  }
-  window.addEventListener('load', aosInit);
-
-  /**
-   * Init typed.js
-   */
-  const selectTyped = document.querySelector('.typed');
-  if (selectTyped) {
-    let typed_strings = selectTyped.getAttribute('data-typed-items');
-    typed_strings = typed_strings.split(',');
-    new Typed('.typed', {
-      strings: typed_strings,
-      loop: true,
-      typeSpeed: 100,
-      backSpeed: 50,
-      backDelay: 2000
-    });
-  }
-
-  /**
-   * Initiate Pure Counter
-   */
-  new PureCounter();
-
-  /**
-   * Animate the skills items on reveal
-   */
-  let skillsAnimation = document.querySelectorAll('.skills-animation');
-  skillsAnimation.forEach((item) => {
-    new Waypoint({
-      element: item,
-      offset: '80%',
-      handler: function(direction) {
-        let progress = item.querySelectorAll('.progress .progress-bar');
-        progress.forEach(el => {
-          el.style.width = el.getAttribute('aria-valuenow') + '%';
+  /* ---------- scrollspy ---------- */
+  var sections = document.querySelectorAll('section[id]');
+  var navAnchors = links.querySelectorAll('a[href^="#"]');
+  var spy = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) {
+        navAnchors.forEach(function (a) {
+          a.classList.toggle('active', a.getAttribute('href') === '#' + entry.target.id);
         });
       }
     });
-  });
+  }, { rootMargin: '-45% 0px -50% 0px' });
+  sections.forEach(function (s) { spy.observe(s); });
 
-  /**
-   * Initiate glightbox
-   */
-  const glightbox = GLightbox({
-    selector: '.glightbox'
-  });
+  /* ---------- typewriter ---------- */
+  var roles = [
+    'Senior Unified Communications Engineer',
+    'AI-Powered UCC Architect',
+    'Microsoft Teams Rooms & VoIP Expert',
+    'Full-Stack Builder — React · Python',
+  ];
+  var typedEl = document.getElementById('typed');
+  if (reduceMotion) {
+    typedEl.textContent = roles[0];
+  } else {
+    var roleIdx = 0, charIdx = 0, deleting = false;
+    (function tick() {
+      var word = roles[roleIdx];
+      typedEl.textContent = word.slice(0, charIdx);
+      var delay;
+      if (!deleting) {
+        charIdx++;
+        delay = 45;
+        if (charIdx > word.length) { deleting = true; delay = 2200; }
+      } else {
+        charIdx--;
+        delay = 22;
+        if (charIdx === 0) { deleting = false; roleIdx = (roleIdx + 1) % roles.length; delay = 350; }
+      }
+      setTimeout(tick, delay);
+    })();
+  }
 
-  /**
-   * Init isotope layout and filters
-   */
-  document.querySelectorAll('.isotope-layout').forEach(function(isotopeItem) {
-    let layout = isotopeItem.getAttribute('data-layout') ?? 'masonry';
-    let filter = isotopeItem.getAttribute('data-default-filter') ?? '*';
-    let sort = isotopeItem.getAttribute('data-sort') ?? 'original-order';
+  /* ---------- reveal on scroll ---------- */
+  var reveals = Array.prototype.slice.call(document.querySelectorAll('.reveal'));
+  if (reduceMotion) {
+    reveals.forEach(function (el) { el.classList.add('visible'); });
+  } else {
+    var ro = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          ro.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    reveals.forEach(function (el) { ro.observe(el); });
 
-    let initIsotope;
-    imagesLoaded(isotopeItem.querySelector('.isotope-container'), function() {
-      initIsotope = new Isotope(isotopeItem.querySelector('.isotope-container'), {
-        itemSelector: '.isotope-item',
-        layoutMode: layout,
-        filter: filter,
-        sortBy: sort
+    // Fallback sweep: if the page loaded in a 0×0/hidden viewport the observer
+    // never fires, so also reveal anything already inside the viewport.
+    var sweepPending = false;
+    function revealSweep() {
+      sweepPending = false;
+      if (window.innerHeight === 0) return;
+      reveals = reveals.filter(function (el) {
+        var r = el.getBoundingClientRect();
+        if (r.top < window.innerHeight * 0.95 && r.bottom > 0) {
+          el.classList.add('visible');
+          ro.unobserve(el);
+          return false;
+        }
+        return true;
+      });
+    }
+    function queueSweep() {
+      if (!sweepPending) {
+        sweepPending = true;
+        // setTimeout (not rAF): still runs in hidden/background documents
+        setTimeout(revealSweep, 40);
+      }
+    }
+    window.addEventListener('scroll', queueSweep, { passive: true });
+    window.addEventListener('resize', queueSweep);
+    document.addEventListener('visibilitychange', queueSweep);
+    queueSweep();
+    setTimeout(queueSweep, 600);
+  }
+
+  /* ---------- animated counters ---------- */
+  var counters = document.querySelectorAll('.stat__num');
+  var co = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (!entry.isIntersecting) return;
+      co.unobserve(entry.target);
+      var el = entry.target;
+      var target = parseFloat(el.dataset.count);
+      var suffix = el.dataset.suffix || '';
+      var decimals = parseInt(el.dataset.decimals || '0', 10);
+      if (reduceMotion) {
+        el.textContent = target.toFixed(decimals) + suffix;
+        return;
+      }
+      var start = null;
+      var dur = 1400;
+      function step(ts) {
+        if (!start) start = ts;
+        var p = Math.min((ts - start) / dur, 1);
+        var eased = 1 - Math.pow(1 - p, 3);
+        el.textContent = (target * eased).toFixed(decimals) + suffix;
+        if (p < 1) requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+    });
+  }, { threshold: 0.5 });
+  counters.forEach(function (el) { co.observe(el); });
+
+  /* ---------- 3D tilt on cards ---------- */
+  if (!reduceMotion && window.matchMedia('(hover: hover)').matches) {
+    document.querySelectorAll('.tilt').forEach(function (card) {
+      var raf = null;
+      card.addEventListener('pointermove', function (e) {
+        if (raf) return;
+        raf = requestAnimationFrame(function () {
+          raf = null;
+          var r = card.getBoundingClientRect();
+          var px = (e.clientX - r.left) / r.width - 0.5;
+          var py = (e.clientY - r.top) / r.height - 0.5;
+          card.style.transform =
+            'perspective(900px) rotateX(' + (-py * 7).toFixed(2) + 'deg) rotateY(' + (px * 7).toFixed(2) + 'deg) translateZ(4px)';
+        });
+      });
+      card.addEventListener('pointerleave', function () {
+        card.style.transition = 'transform 0.45s ease';
+        card.style.transform = 'perspective(900px) rotateX(0deg) rotateY(0deg)';
+        setTimeout(function () { card.style.transition = ''; }, 460);
       });
     });
-
-    isotopeItem.querySelectorAll('.isotope-filters li').forEach(function(filters) {
-      filters.addEventListener('click', function() {
-        isotopeItem.querySelector('.isotope-filters .filter-active').classList.remove('filter-active');
-        this.classList.add('filter-active');
-        initIsotope.arrange({
-          filter: this.getAttribute('data-filter')
-        });
-        if (typeof aosInit === 'function') {
-          aosInit();
-        }
-      }, false);
-    });
-
-  });
-
-  /**
-   * Init swiper sliders
-   */
-  function initSwiper() {
-    document.querySelectorAll(".init-swiper").forEach(function(swiperElement) {
-      let config = JSON.parse(
-        swiperElement.querySelector(".swiper-config").innerHTML.trim()
-      );
-
-      if (swiperElement.classList.contains("swiper-tab")) {
-        initSwiperWithCustomPagination(swiperElement, config);
-      } else {
-        new Swiper(swiperElement, config);
-      }
-    });
   }
-
-  window.addEventListener("load", initSwiper);
-
-  /**
-   * Correct scrolling position upon page load for URLs containing hash links.
-   */
-  window.addEventListener('load', function(e) {
-    if (window.location.hash) {
-      if (document.querySelector(window.location.hash)) {
-        setTimeout(() => {
-          let section = document.querySelector(window.location.hash);
-          let scrollMarginTop = getComputedStyle(section).scrollMarginTop;
-          window.scrollTo({
-            top: section.offsetTop - parseInt(scrollMarginTop),
-            behavior: 'smooth'
-          });
-        }, 100);
-      }
-    }
-  });
-
-  /**
-   * Navmenu Scrollspy
-   */
-  let navmenulinks = document.querySelectorAll('.navmenu a');
-
-  function navmenuScrollspy() {
-    navmenulinks.forEach(navmenulink => {
-      if (!navmenulink.hash) return;
-      let section = document.querySelector(navmenulink.hash);
-      if (!section) return;
-      let position = window.scrollY + 200;
-      if (position >= section.offsetTop && position <= (section.offsetTop + section.offsetHeight)) {
-        document.querySelectorAll('.navmenu a.active').forEach(link => link.classList.remove('active'));
-        navmenulink.classList.add('active');
-      } else {
-        navmenulink.classList.remove('active');
-      }
-    })
-  }
-  window.addEventListener('load', navmenuScrollspy);
-  document.addEventListener('scroll', navmenuScrollspy);
-
 })();
