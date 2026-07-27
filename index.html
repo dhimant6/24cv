@@ -240,6 +240,42 @@
         <h2>Things I've <span class="grad">built</span></h2>
       </div>
 
+      <!-- Featured project: UCM-Bridge -->
+      <article class="feature reveal">
+        <div class="feature__media tilt">
+          <img src="assets/img/ucm-bridge-architecture.svg" alt="UCM-Bridge architecture — six platform connectors extract into one canonical UC model and apply back out in both directions, behind enforced guardrails" loading="lazy">
+        </div>
+        <div class="feature__body">
+          <span class="feature__tag">Featured · Live</span>
+          <h3>UCM-Bridge — bidirectional UC migration platform</h3>
+          <p>
+            Moves configuration, identity and telephony state between on-prem UC estates
+            (Cisco CUCM · Avaya Aura · Skype for Business) and cloud platforms
+            (Teams Phone · Slack · Genesys Cloud) — in <em>both</em> directions, against one
+            versioned canonical model rather than N×M point-to-point migrators. Discovery,
+            an 18-rule assessment engine, number normalisation, dependency-aware wave planning,
+            resumable runs with rollback, and a hash-chained audit log.
+          </p>
+          <p>
+            The interesting part is what it <em>refuses</em> to do. Production writes need a
+            dry-run receipt matching the plan's digest, two distinct approvers, an open change
+            window and per-site emergency-calling confirmation — and no connector whose API
+            surface is unverified may write at all. Every guardrail is enforced in the library
+            with a test asserting the refusal.
+          </p>
+          <div class="chips chips--sm">
+            <span>Python 3.12</span><span>FastAPI</span><span>Pydantic v2</span>
+            <span>React 19 · TypeScript</span><span>Docker</span><span>288 tests</span>
+            <span>mypy --strict</span>
+          </div>
+          <div class="feature__links">
+            <a class="btn btn--solid btn--sm" href="https://ucm-bridge-console.onrender.com/" target="_blank" rel="noopener">Live demo ↗</a>
+            <a class="btn btn--ghost btn--sm" href="https://github.com/dhimant6/UC-Bridge" target="_blank" rel="noopener">GitHub ↗</a>
+          </div>
+          <p class="feature__note">⏳ Free-tier host — first request may take ~30&nbsp;s to wake the server. Every connector runs against recorded cassettes: no vendor credentials, no network.</p>
+        </div>
+      </article>
+
       <!-- Featured project -->
       <article class="feature reveal">
         <div class="feature__media tilt">
