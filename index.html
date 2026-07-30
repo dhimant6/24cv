@@ -240,6 +240,43 @@
         <h2>Things I've <span class="grad">built</span></h2>
       </div>
 
+      <!-- Featured project: SIGNAL -->
+      <article class="feature reveal">
+        <div class="feature__media tilt">
+          <img src="assets/img/signal-call-ladder.svg" alt="SIGNAL call ladder — an INVITE dialog against a real SIP stack: 100 Trying, 180 Ringing, 200 OK carrying the SDP answer, an end-to-end ACK, RTP flowing beside the signalling, then BYE" loading="lazy">
+        </div>
+        <div class="feature__body">
+          <span class="feature__tag">Featured · Live</span>
+          <h3>SIGNAL — learn SIP by breaking it</h3>
+          <p>
+            A browser game that teaches SIP to the level where you can read a trace from a broken
+            production call and name the failing header. 37 levels across 8 acts — transactions and
+            timers, dialogs and routing, offer/answer, forking proxies, NATs, B2BUAs, digest auth —
+            on an engine I wrote from the octets up: scanner and parser, both transaction state
+            machines, every §17 timer, a virtual clock and a simulated lossy network.
+          </p>
+          <p>
+            Nothing is scripted. A level is a network topology plus a goal predicate evaluated against
+            the event log the engine actually produced, so <em>any</em> answer the RFCs permit passes and
+            none they forbid does — there is no answer key to match. Adversary Mode hands you a working
+            call and a budget to break it, and scores the attack void if it only succeeded because the
+            defender itself went non-conformant. CI plays every level with a reference solution, and
+            plays a wrong answer at the hard ones to prove the level can still be failed.
+          </p>
+          <div class="chips chips--sm">
+            <span>TypeScript</span><span>Vite</span><span>Zero runtime deps</span>
+            <span>RFC 3261 · 3264 · 4566</span><span>Vitest · 453 tests</span>
+            <span>Property-based · RFC 4475 corpus</span>
+          </div>
+          <div class="feature__links">
+            <a class="btn btn--solid btn--sm" href="https://dhimant6.github.io/signal-sip/" target="_blank" rel="noopener">Play it ↗</a>
+            <a class="btn btn--ghost btn--sm" href="https://dhimant6.github.io/signal-sip/inspector/" target="_blank" rel="noopener">Message inspector ↗</a>
+            <a class="btn btn--ghost btn--sm" href="https://github.com/dhimant6/signal-sip" target="_blank" rel="noopener">GitHub ↗</a>
+          </div>
+          <p class="feature__note">⚡ Static host — no cold start. The whole engine runs in your browser; nothing you type is sent anywhere.</p>
+        </div>
+      </article>
+
       <!-- Featured project: UCM-Bridge -->
       <article class="feature reveal">
         <div class="feature__media tilt">

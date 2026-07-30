@@ -1,0 +1,100 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600" role="img"
+     aria-label="SIGNAL call ladder: a complete INVITE dialog between a player's user agent and a real SIP stack — INVITE with an SDP offer, 100 Trying, 180 Ringing, 200 OK carrying the SDP answer, an end-to-end ACK, RTP flowing beside the signalling, then BYE and its 200 OK — with the engine's guarantees listed beneath.">
+  <title>SIGNAL — a call, laddered, against a stack that is not an answer key</title>
+
+  <defs>
+    <linearGradient id="grad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#22d3ee"/>
+      <stop offset="100%" stop-color="#8b5cf6"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#8b5cf6" stop-opacity="0.28"/>
+      <stop offset="100%" stop-color="#8b5cf6" stop-opacity="0"/>
+    </radialGradient>
+    <marker id="reqArrow" viewBox="0 0 10 10" refX="9" refY="5"
+            markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#22d3ee"/>
+    </marker>
+    <marker id="respArrow" viewBox="0 0 10 10" refX="9" refY="5"
+            markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#8b5cf6"/>
+    </marker>
+    <marker id="mediaArrow" viewBox="0 0 10 10" refX="9" refY="5"
+            markerWidth="5.5" markerHeight="5.5" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#6ee7b7"/>
+    </marker>
+  </defs>
+
+  <rect width="800" height="600" fill="#0a0c1a"/>
+  <circle cx="400" cy="250" r="250" fill="url(#glow)"/>
+
+  <!-- The two endpoints. The right-hand one is the whole point: it is not a script. -->
+  <g font-family="Inter,sans-serif">
+    <rect x="66" y="22" width="204" height="60" rx="12" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.11)"/>
+    <text x="88" y="48" fill="#ffffff" font-size="17" font-weight="600">Your user agent</text>
+    <text x="88" y="68" fill="#8a8fa8" font-size="13.5">octets you typed</text>
+
+    <rect x="530" y="22" width="204" height="60" rx="12" fill="rgba(255,255,255,0.05)" stroke="url(#grad)" stroke-width="1.6"/>
+    <text x="552" y="48" fill="#ffffff" font-size="17" font-weight="600">A real SIP stack</text>
+    <text x="552" y="68" fill="#22d3ee" font-size="13.5">RFC 3261, not an answer key</text>
+  </g>
+
+  <!-- Lifelines -->
+  <g stroke="rgba(255,255,255,0.16)" stroke-width="1.4" stroke-dasharray="3 6">
+    <line x1="168" y1="82" x2="168" y2="460"/>
+    <line x1="632" y1="82" x2="632" y2="460"/>
+  </g>
+
+  <!-- The dialog. Requests travel right in cyan, responses left in violet. -->
+  <g font-family="Inter,sans-serif" font-size="14.5" font-weight="600">
+    <text x="400" y="114" fill="#22d3ee" text-anchor="middle">INVITE — with an SDP offer</text>
+    <path d="M170,126 L630,126" stroke="#22d3ee" stroke-width="1.8" fill="none" marker-end="url(#reqArrow)"/>
+    <text x="400" y="145" fill="#8a8fa8" font-size="12.5" font-weight="400"
+          font-family="ui-monospace,'SF Mono',Menlo,Consolas,monospace" text-anchor="middle">branch=z9hG4bK… · From tag · Call-ID</text>
+
+    <text x="400" y="176" fill="#8b5cf6" text-anchor="middle">100 Trying</text>
+    <path d="M630,188 L170,188" stroke="#8b5cf6" stroke-width="1.8" fill="none" marker-end="url(#respArrow)"/>
+
+    <text x="400" y="214" fill="#8b5cf6" text-anchor="middle">180 Ringing</text>
+    <path d="M630,226 L170,226" stroke="#8b5cf6" stroke-width="1.8" fill="none" marker-end="url(#respArrow)"/>
+
+    <text x="400" y="252" fill="#8b5cf6" text-anchor="middle">200 OK — with the SDP answer</text>
+    <path d="M630,264 L170,264" stroke="#8b5cf6" stroke-width="1.8" fill="none" marker-end="url(#respArrow)"/>
+
+    <text x="400" y="290" fill="#22d3ee" text-anchor="middle">ACK</text>
+    <path d="M170,302 L630,302" stroke="#22d3ee" stroke-width="1.8" fill="none" marker-end="url(#reqArrow)"/>
+    <text x="400" y="321" fill="#8a8fa8" font-size="12.5" font-weight="400" text-anchor="middle">end-to-end — a 2xx is not acknowledged by the transaction layer</text>
+  </g>
+
+  <!-- Media runs beside the signalling, never inside it. -->
+  <g>
+    <path d="M182,352 L618,352" stroke="#6ee7b7" stroke-width="1.6" fill="none"
+          stroke-dasharray="6 5" marker-start="url(#mediaArrow)" marker-end="url(#mediaArrow)" opacity="0.9"/>
+    <rect x="286" y="337" width="228" height="30" rx="15" fill="#0a0c1a"/>
+    <text x="400" y="357" fill="#6ee7b7" font-family="Inter,sans-serif" font-size="13.5"
+          font-weight="600" text-anchor="middle">RTP — audio, not SIP</text>
+  </g>
+
+  <!-- And the call is torn down properly, because a BYE is a request like any other. -->
+  <g font-family="Inter,sans-serif" font-size="14.5" font-weight="600">
+    <text x="400" y="390" fill="#22d3ee" text-anchor="middle">BYE</text>
+    <path d="M170,402 L630,402" stroke="#22d3ee" stroke-width="1.8" fill="none" marker-end="url(#reqArrow)"/>
+
+    <text x="400" y="428" fill="#8b5cf6" text-anchor="middle">200 OK</text>
+    <path d="M630,440 L170,440" stroke="#8b5cf6" stroke-width="1.8" fill="none" marker-end="url(#respArrow)"/>
+  </g>
+
+  <!-- What the engine guarantees about the run. -->
+  <rect x="24" y="482" width="752" height="90" rx="16" fill="rgba(255,255,255,0.035)"
+        stroke="rgba(255,255,255,0.09)"/>
+  <text x="44" y="510" fill="#8a8fa8" font-family="'Space Grotesk',sans-serif" font-size="14"
+        font-weight="600" letter-spacing="1.4">THE ENGINE IS THE SOURCE OF TRUTH</text>
+
+  <g font-family="Inter,sans-serif" font-size="13.5" fill="#d7dae6">
+    <text x="44" y="537">✓ Any answer the RFCs permit passes</text>
+    <text x="44" y="559">✓ Every diagnostic cites its clause</text>
+
+    <text x="416" y="537">✓ 453 tests · 37 levels · 8 acts · 5 play modes</text>
+    <text x="416" y="559">✓ Zero runtime deps · nothing leaves your browser</text>
+  </g>
+</svg>
